@@ -16,7 +16,8 @@ class DatabaseCheck:
         try:
             connection = jaydebeapi.connect(self.driver_name, self.connection_url, self.connection_properties, self.jtds_jar_path)
             cursor = connection.cursor()
-            cursor.execute(self.statements[0])
+            for statement in self.statements:
+                cursor.execute(statement)
             res = cursor.fetchall()
             if res:
                 print(str(res))

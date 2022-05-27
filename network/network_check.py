@@ -8,7 +8,7 @@ class NetworkCheck:
 
     def run(self):
         result = subprocess.run(
-            ['ping', '-c', '30', self.ip],
+            ['ping', '-c', '1', self.ip],
             text=True,
             capture_output=True,
             check=True
