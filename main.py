@@ -19,12 +19,14 @@ if __name__ == '__main__':
     jar_path = os.environ['JAR_PATH']
     databaseCheck = DatabaseCheck(host, port, database_name, user, password, statements, jar_path)
 
-    start = time.time()
-    databaseCheck.run()
-    now = time.time()
-    time_database_check_result = (now - start)
-    DATABASE_CONNECTION_CHECK.set(time_database_check_result)
-    print("TIME: " + str(time_database_check_result))
+    while True:
+        start = time.time()
+        databaseCheck.run()
+        now = time.time()
+        time_database_check_result = (now - start)
+        DATABASE_CONNECTION_CHECK.set(time_database_check_result)
+        print("TIME: " + str(time_database_check_result))
+        time.sleep(30)
 
 
 
